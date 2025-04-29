@@ -1,0 +1,55 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load the dataset
+df = pd.read_csv("C:\\Users\\seshu\\OneDrive\\Desktop\\Shill Bidding Dataset.csv")
+
+# Objective 1: Count of Legitimate vs Shill Bidding
+class_counts = df['Class'].value_counts().sort_index()
+
+plt.figure(figsize=(6, 4))
+plt.bar(['Legitimate (0)', 'Shill (1)'], class_counts.values, color=['skyblue', 'salmon'])
+plt.title('Count of Legitimate vs Shill Bidding')
+plt.xlabel('Class')
+plt.ylabel('Number of Records')
+plt.show()
+
+# Objective 2: Average Auction Bids by Class
+avg_bids = df.groupby('Class')['Auction_Bids'].mean()
+
+plt.figure(figsize=(6, 4))
+plt.barh(['Legitimate (0)', 'Shill (1)'], avg_bids.values, color=['skyblue', 'salmon'])
+plt.title('Average Auction Bids by Class')
+plt.xlabel('Average Auction Bids')
+plt.show()
+
+# Objective 3: Distribution of Early Bidding
+plt.figure(figsize=(6, 4))
+plt.hist(df['Early_Bidding'], bins=20, color='purple', edgecolor='black')
+plt.title('Distribution of Early Bidding')
+plt.xlabel('Early Bidding')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+
+# Objective 4: Early Bidding vs Last Bidding (Colored by Class)
+plt.figure(figsize=(6, 4))
+scatter = plt.scatter(df['Early_Bidding'], df['Last_Bidding'], alpha=0.5, c=df['Class'], cmap='coolwarm')
+plt.title('Early vs Last Bidding (Colored by Class)')
+plt.xlabel('Early Bidding')
+plt.ylabel('Last Bidding')
+plt.colorbar(scatter, label='Class (0 = Legitimate, 1 = Shill)')
+plt.grid(True)
+plt.show()
+
+# Objective 5: Average Winning Ratio over Auction Duration
+avg_win_ratio = df.groupby('Auction_Duration')['Winning_Ratio'].mean()
+
+plt.figure(figsize=(6, 4))
+plt.plot(avg_win_ratio.index, avg_win_ratio.values, marker='o', color='green')
+plt.title('Average Winning Ratio over Auction Duration')
+plt.xlabel('Auction Duration (days)')
+plt.ylabel('Average Winning Ratio')
+plt.grid(True)
+plt.show()
