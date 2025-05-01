@@ -1,6 +1,6 @@
-# Analysis of Shill Bidding
+# Analysis of Rainfall
 
-This project analyzes fraudulent bidding behavior (specifically, **shill bidding**) in online auction platforms using Exploratory Data Analysis (EDA) techniques.
+This project analyzes fraudulent bidding behavior (specifically, **Rainfall Analysis**) in online auction platforms using Exploratory Data Analysis (EDA) techniques.
 
 ## 📁 Project Overview
 
@@ -13,7 +13,7 @@ Online auction platforms are increasingly susceptible to fraudulent bidding, whe
 
 ## 📊 Dataset
 
-- **Source**: Publicly available CSV titled `Shill Bidding Dataset.csv`
+- **Source**: Publicly available CSV titled `Rainfall Dataset.csv`
 - **Records**: 6,321
 - **Features**: 11 numeric features
 - **Target**: Binary classification (`Class` - 0: Legitimate, 1: Shill)
